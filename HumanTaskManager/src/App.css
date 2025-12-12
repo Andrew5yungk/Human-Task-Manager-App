@@ -4,20 +4,20 @@
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-image: url('https://media.istockphoto.com/id/485165297/vector/oriental-style-painting-bamboo-in-tranquil-scene.jpg?s=612x612&w=0&k=20&c=ygScK4BViMuGZAB1jfU9q0YuqNn3_hgVLnaDrPEWPgU=');
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/826/233/271/skyscraper-pixel-art-3d-digital-art-wallpaper-preview.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
-  border: inset 5px #b3afaf;
+  border: inset 5px cyan;
   border-radius: 20px;
   height:auto;
 }
 
 
 #title {
-  color: #333;
+  color: cyan;
   margin-top: 20px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -25,12 +25,12 @@
 /* Base button style */
 button {
   /* Lifting effect */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0px 0px 6px rgb(255, 255, 255); 
   /* Color */
-  background-color: #4CAF50; 
-  color: white;
+  background-color: #000000; 
+  color: rgb(255, 255, 255);
   padding: 10px 20px;
-  border: none;
+  border: 1px solid cyan;
   border-radius: 5px;
   cursor: pointer;
   /* Transition for smooth changes */
@@ -40,9 +40,9 @@ button {
 /* Hover state */
 button:hover {
   /* Slightly larger shadow on hover */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 5px 12px cyan;
   /* Change color on hover */
-  background-color: #45a049; 
+  background-color: cyan; 
   transform: scale(1.2);
 }
 
@@ -68,30 +68,63 @@ input {
 }
 
 .task {
-  background-color: #aef0a1;
-  color: rgb(0, 0, 0);
-  border: 1px solid #ddd;
+  background-color: #000000;
+  color: cyan;
+  border: 1px solid cyan;
   border-radius: 5px;
   padding: 10px;
   margin: 10px auto;
   width: 300px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 8px 0 cyan, 0 6px 20px 0 cyan;
   text-align: left;
 }
 
-/* .material-icons {
-  vertical-align: middle;
-  cursor: pointer;
-  color: #555;
-  margin-right: 5px;
-  font-size: 30px;
-} */
+.task:hover {
+  box-shadow: 0 8px 16px 0 cyan, 0 12px 40px 0 cyan;
+  transform: scale(1.02);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
 
+.task:active {
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+  transform: translateY(2px);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.task:last-of-type {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.task.task:last-of-type.delete {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
 
 .material-delete {
   vertical-align: middle;
   cursor: pointer;
-  color: #242418;
+  color: cyan;
   margin-right: 5px;
   float: right;
   text-align: right;
@@ -104,8 +137,7 @@ input {
   cursor: pointer;
   margin-right: 5px;
   vertical-align: middle;
-  cursor: pointer;
-  color: #555;
+  color: #000000;
   margin-right: 5px;
   font-size: 30px;
   border-radius: 25px;
@@ -113,19 +145,20 @@ input {
   /* Slightly larger shadow on hover */
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   /* Change color on hover */
-  background-color: #282928; 
+  background-color: #282928;
+  color: white;
   transform: scale(1.2);
 }
 
 /* Active state (when button is being pressed) */
-#checkbox:active {
+/* #checkbox:active {
   /* Reduce shadow and push button down */
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5); 
   transform: translateY(2px);
   /* Optional: change color on active state */
   background-color: #070707;
+  text-decoration: line-through cyan;
   }
-}
 
 task,.task {
   font-size: 18px;

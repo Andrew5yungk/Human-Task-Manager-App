@@ -13,10 +13,18 @@ function Home() {
         .then(data => setTask(data))
     }, [])
     
-    
+    const [fadeIn, setFadeIn] = useState(false)
+
+    useEffect(() => {
+        if (task.length > 0) {
+            setFadeIn(true)
+            setTimeout(() => setFadeIn(false), 500)
+        }
+    }, [task])
+
     const handleDelete = (id) => {
         axios.put(`http://localhost:3001/delete/${id}`)
-        .then(result => {location.reload()})
+        .then(() => setTask(task => task.filter(t => t._id !== id)))
         .catch(err => console.log(err))
     }
 
@@ -43,5 +51,7 @@ function Home() {
     </div>
   )
 }
+
+
 
 export default Home
