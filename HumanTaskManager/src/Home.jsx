@@ -3,6 +3,7 @@ import Create from './Create'
 import { useEffect } from 'react'
 import { MdDelete } from "react-icons/md";
 import axios from 'axios'
+import './App.css'
 
 function Home() {
     const [task, setTask] = useState([])
@@ -28,6 +29,11 @@ function Home() {
         .catch(err => console.log(err))
     }
 
+    const handleToggle = (id) => {
+        axios.put(`http://localhost:3001/update/${id}`)
+        .then(() => setTask(task => task.map(t => t._id === id ? {...t, done: !t.done} : t)))
+        .catch(err => console.log(err))
+    }
 
   return (
     <div className="App">
@@ -39,11 +45,11 @@ function Home() {
             <div><h2>No Tasks ATM</h2></div>
             :
             task.map(task => (
-                <div className="task">
+                <div className="task" style={{border: task.done ? '1px solid red' : '', boxShadow: task.done ? '0 4px 8px 0 red, 0 6px 20px 0 red' : '', borderRadius: task.done ? '5px' : '', taskHover: task.done ? 'box-shadow: 0 8px 16px 0 red, 0 12px 40px 0 red' : ''}}>
                     <div>
-                        <input type="checkbox" id="checkbox"/>
-                        <span>{task.task}</span>
-                        <span className="material-delete" onClick={() => handleDelete(task._id)}><MdDelete /></span>
+                        <input type="checkbox" id="checkbox" checked={task.done} onChange={() => handleToggle(task._id)}/>
+                        <span className={task.done ? "strikethrough" : ""}>{task.task}</span>
+                        <span className="material-delete" onClick={() => handleDelete(task._id)}><MdDelete /></span> 
                     </div>
                 </div>
             ))

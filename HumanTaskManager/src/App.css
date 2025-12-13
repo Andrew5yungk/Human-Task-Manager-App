@@ -85,11 +85,7 @@ input {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.task:active {
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
-  transform: translateY(2px);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
+
 
 .task:last-of-type {
   animation: fadeIn 0.5s ease-in-out;
@@ -163,3 +159,22 @@ input {
 task,.task {
   font-size: 18px;
 }
+
+.strikethrough {
+  text-decoration: line-through wavy white ;
+  color: rgb(238, 5, 5);
+  text-shadow: red;
+}
+
+/* changes color of .material-delete when .strikethrough is active*/
+.strikethrough + .material-delete {
+  color: rgb(238, 5, 5);
+}
+
+.completedTask {
+  box-shadow: 0 4px 8px 0 #ccc;
+}
+
+
+
+
