@@ -131,6 +131,11 @@ input {
   font-size: 30px;
 }
 
+.material-delete:hover {
+  rotate: 6deg;
+  transform: scale(1.1);
+}
+
 #checkbox {
   width: 20px;
   height: 20px;
