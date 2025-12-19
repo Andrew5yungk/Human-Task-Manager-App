@@ -34,7 +34,6 @@ function Home() {
         .then(() => setTask(task => task.map(t => t._id === id ? {...t, done: !t.done} : t)))
         .catch(err => console.log(err))
     }
-// will fix the checkbox bug //
 
   return (
     <div className="App">

@@ -24,12 +24,21 @@ app.post('/add', (req, res) => {
         .catch(err => res.json(err))
 })
 
-app.put('/update/:id', (req, res) => {
-    const {id} = req.params;
-    HTMModel.findByIdAndUpdate(id, {done: true}, { new: true })
-    .then(result => res.json(result))
-    .catch(err => res.json(err))
-})
+app.put('/update/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const task = await HTMModel.findById(id);
+        if (!task) {
+            return res.status(404).json({ message: "Task not found" });
+        }
+        task.done = !task.done;
+        await task.save();
+        res.json(task);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
 
 app.put('/delete/:id', (req, res) => {
     const {id} = req.params;
